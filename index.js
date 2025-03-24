@@ -1,31 +1,35 @@
-const itemInput =document.getElementById('item');
-const todoTimeInput=document.getelementbyId('Time')
-const saveBtn=document.getElementById('save');
-const tableBody=document.getElementById('tableBody');
+const itemInput = document.getElementById("item")
+const todoTimeInput = document.getElementById("Time") // Fixed the method name
+const saveBtn = document.getElementById("save")
+const tableBody = document.getElementById("tableBody")
 
-//pick the values to the given element
+// Pick the values to the given element
 const getElementbyValue = (element) => {
-    return element.value;
+  return element.value
 }
-//on button click
+
+// On button click
 saveBtn.addEventListener("click", (event) => {
-    event.preventDefault();
+  event.preventDefault()
 
-    //pick value of the task name
-    const itemValue = getElementbyValue(itemInput);
-    const todoTimevalue = getElementbyValue(todoTimeInput);
+  // Pick value of the task name
+  const itemValue = getElementbyValue(itemInput)
+  const todoTimeValue = getElementbyValue(todoTimeInput)
 
-    const tableRow = document.createElement("tr");
+  const tableRow = document.createElement("tr")
 
-    const itemTd = document.createElement("td");
+  const itemTd = document.createElement("td")
+  itemTd.innerHTML = itemValue
+  tableRow.appendChild(itemTd)
 
-    itemTd.innerHTML = itemValue;
-    tableRow.appendChild(itemTd)
+  const toDoTimeTd = document.createElement("td")
+  toDoTimeTd.innerHTML = todoTimeValue
+  tableRow.appendChild(toDoTimeTd)
 
-    const toDoTimeTd = document.createElement("td");
-    toDoTimeTd.innerHTML = todoTimevalue;
-    tableRow.appendChild(toDoTimeTd);
+  tableBody.appendChild(tableRow)
 
-    tableBody.appendChild(tableRow);
+  // Clear input fields after adding
+  itemInput.value = ""
+  todoTimeInput.value = ""
 })
-//console.log('js is created);
+
